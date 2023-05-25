@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright 2023 ABSA Group Limited
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>za.co.absa.shaded</groupId>
+    <artifactId>absa-shaded</artifactId>
+    <name>Absa Shaded Libraries</name>
+    <version>0.0.1-SNAPSHOT</version>
+
+    <parent>
+        <groupId>za.co.absa</groupId>
+        <artifactId>root-pom</artifactId>
+        <version>1.0.5</version>
+    </parent>
+
+    <packaging>pom</packaging>
+
+    <inceptionYear>2023</inceptionYear>
+
+    <url>https://github.com/AbsaOSS/absa-shaded</url>
+
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <organization>
+        <name>ABSA Group Limited</name>
+        <url>https://www.absa.africa</url>
+    </organization>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>1.8</java.version>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+    </properties>
+
+    <scm>
+        <url>${scm.url}</url>
+        <connection>${scm.connection}</connection>
+        <developerConnection>${scm.developerConnection}</developerConnection>
+        <tag>HEAD</tag>
+    </scm>
+
+    <modules>
+        <module>absa-shaded-jackson</module>
+    </modules>
+
+    <build>
+        <plugins>
+        </plugins>
+
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-shade-plugin</artifactId>
+                    <version>3.4.1</version>
+                    <configuration>
+                        <filters combine.children="append">
+                            <filter>
+                                <artifact>*</artifact>
+                                <excludes>
+                                    <exclude>META-INF/maven/**</exclude>
+                                </excludes>
+                            </filter>
+                        </filters>
+                        <transformers>
+                            <!-- The service transformer is needed to merge META-INF/services files -->
+                            <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
+                            <!-- The ApacheNoticeResourceTransformer collects and aggregates NOTICE files -->
+                            <transformer implementation="org.apache.maven.plugins.shade.resource.ApacheNoticeResourceTransformer">
+                                <projectName>Absa-shaded</projectName>
+                                <encoding>UTF-8</encoding>
+                            </transformer>
+                        </transformers>
+                    </configuration>        
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+    <dependencies>
+    </dependencies>
+
+    <profiles>
+    </profiles>
+</project>
