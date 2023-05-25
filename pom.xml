@@ -21,7 +21,7 @@
     <groupId>za.co.absa.shaded</groupId>
     <artifactId>absa-shaded</artifactId>
     <name>Absa Shaded Libraries</name>
-    <version>0.0.1</version>
+    <version>0.0.2-SNAPSHOT</version>
 
     <parent>
         <groupId>za.co.absa</groupId>
@@ -59,7 +59,7 @@
         <url>${scm.url}</url>
         <connection>${scm.connection}</connection>
         <developerConnection>${scm.developerConnection}</developerConnection>
-        <tag>release/0.0.1</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <modules>
