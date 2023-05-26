@@ -21,7 +21,7 @@
     <groupId>za.co.absa.shaded</groupId>
     <artifactId>absa-shaded</artifactId>
     <name>Absa Shaded Libraries</name>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1</version>
     <description>absa shaded artifacts</description>
 
     <parent>
@@ -60,7 +60,7 @@
         <url>${scm.url}</url>
         <connection>${scm.connection}</connection>
         <developerConnection>${scm.developerConnection}</developerConnection>
-        <tag>HEAD</tag>
+        <tag>release/0.0.1</tag>
     </scm>
 
     <modules>
@@ -88,7 +88,7 @@
                         </filters>
                         <transformers>
                             <!-- The service transformer is needed to merge META-INF/services files -->
-                            <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
+                            <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer" />
                             <!-- The ApacheNoticeResourceTransformer collects and aggregates NOTICE files -->
                             <transformer implementation="org.apache.maven.plugins.shade.resource.ApacheNoticeResourceTransformer">
                                 <projectName>Absa-shaded</projectName>
